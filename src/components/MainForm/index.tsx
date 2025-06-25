@@ -8,9 +8,11 @@ import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
 import { formatSecondsToMinutes } from '../../utils/formatSecondsToMinutes';
+import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
+import { Tips } from '../Tips';
 
 export function MainForm() {
-  const { state, setState } = useTaskContext();
+  const { state, dispatch } = useTaskContext();
 
   const taskNameInput = useRef<HTMLInputElement>(null);
 
@@ -40,30 +42,11 @@ export function MainForm() {
       type: nextCycleType,
     };
 
-    const secondRemaining = newTask.duration * 60;
-
-    setState(prevState => {
-      return {
-        ...prevState,
-        config: { ...prevState.config },
-        activeTask: newTask,
-        currentCycle: nextCycle,
-        secondRemaining,
-        formattedSecondRemaining: formatSecondsToMinutes(secondRemaining),
-        task: [...prevState.task, newTask],
-      };
-    });
+    dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
   }
 
   function handleInterruptTask() {
-    setState(prevState => {
-      return {
-        ...prevState,
-        activeTask: null,
-        secondRemaining: 0,
-        formattedSecondRemaining: '00:00',
-      };
-    });
+    dispatch({ type: TaskActionTypes.INTERRUPT_TASK });
   }
 
   return (
@@ -82,7 +65,7 @@ export function MainForm() {
       </div>
 
       <div className='formRow'>
-        <p>Next Cycle is 25 min</p>
+        <Tips />
       </div>
 
       {state.currentCycle > 0 && (
