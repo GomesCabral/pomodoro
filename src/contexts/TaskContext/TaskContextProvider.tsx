@@ -16,7 +16,6 @@ export function TaskContextProvider({ children }: TaskContextProviderProps) {
 
   worker.onmessage(e => {
     const countDownSecons = e.data;
-    console.log(countDownSecons);
 
     if (countDownSecons <= 0) {
       dispatch({
@@ -32,9 +31,7 @@ export function TaskContextProvider({ children }: TaskContextProviderProps) {
   });
 
   useEffect(() => {
-    console.log(state);
     if (!state.activeTask) {
-      console.log('worker');
       worker.terminate();
     }
     worker.postMessage(state);
