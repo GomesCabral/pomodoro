@@ -31,7 +31,7 @@ export function taskReducer(
         formattedSecondRemaining: '00:00',
         task: state.task.map(task => {
           if (state.activeTask && state.activeTask.id === task.id) {
-            return { ...state, interruptDate: Date.now() };
+            return { ...task, interruptDate: Date.now() };
           }
           return task;
         }),

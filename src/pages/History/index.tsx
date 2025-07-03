@@ -11,7 +11,6 @@ import { getTaskStatus } from '../../utils/getTaskStatus';
 import { sortTasks, type SortTasksOptions } from '../../utils/sortTasks';
 import { useEffect, useState } from 'react';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
-import { set } from 'date-fns';
 import { showMessage } from '../../adapters/showMessage';
 
 export function History() {
