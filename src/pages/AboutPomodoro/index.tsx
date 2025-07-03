@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { MainTemplate } from '../../assets/templates/MainTemplate';
 import { Container } from '../../components/Container';
 import { GenericHtml } from '../../components/GenericHtml';
@@ -5,11 +6,15 @@ import { Heading } from '../../components/Heading';
 import { RouterLink } from '../../components/RouterLink';
 
 export function AboutPomodoro() {
+  useEffect(() => {
+    document.title = 'Pomodoro';
+  }, []);
+
   return (
     <MainTemplate>
       <Container>
         <GenericHtml>
-          <Heading>A Técnica Pomodoro 🍅</Heading>
+          <Heading>Pomodoro 🍅</Heading>
 
           <p>
             A Técnica Pomodoro é uma metodologia de produtividade criada por{' '}

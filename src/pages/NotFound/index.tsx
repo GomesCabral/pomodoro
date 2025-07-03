@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { MainTemplate } from '../../assets/templates/MainTemplate';
 import { Container } from '../../components/Container';
 import { GenericHtml } from '../../components/GenericHtml';
@@ -5,6 +6,10 @@ import { Heading } from '../../components/Heading';
 import { RouterLink } from '../../components/RouterLink';
 
 export function NotFound() {
+  useEffect(() => {
+    document.title = 'NotFound - Pomodoro';
+  }, []);
+
   return (
     <MainTemplate>
       <Container>
