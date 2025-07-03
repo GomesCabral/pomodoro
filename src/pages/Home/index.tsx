@@ -14,10 +14,6 @@ export function Home() {
       <Container>
         <MainForm />
       </Container>
-
-      <Container>
-        <Footer />
-      </Container>
     </MainTemplate>
   );
 }
